@@ -26,7 +26,7 @@ android {
         versionCode rootProject.versionCode
         versionName rootProject.versionName
 
-        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
 
     // Switch between test types by swapping commented out state
@@ -35,7 +35,6 @@ android {
     buildTypes {
         minified {
             debuggable true
-            minifyEnabled true
             signingConfig signingConfigs.debug
         }
         debug {}
@@ -45,10 +44,10 @@ android {
 dependencies {
     implementation project(':features:base')
 
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-contrib:$espressoVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-intents:$espressoVersion"
-    androidTestImplementation "com.android.support.test:rules:$androidTestVersion"
-    androidTestImplementation "com.android.support.test:runner:$androidTestVersion"
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0'
+    androidTestImplementation 'androidx.test:rules:1.1.0'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
     androidTestImplementation "org.hamcrest:hamcrest-core:$hamcrestVersion"
 }

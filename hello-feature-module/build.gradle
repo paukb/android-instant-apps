@@ -22,10 +22,21 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.0-alpha14'
+        classpath 'com.android.tools.build:gradle:3.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+    }
+
+    subprojects {
+        project.configurations.all {
+            resolutionStrategy.eachDependency { details ->
+                if (details.requested.group == 'androidx.lifecycle'
+                        && (details.requested.name.contains('lifecycle-runtime') || details.requested.name.contains('lifecycle-extensions'))) {
+                    details.useVersion '2.0.0'
+                }
+            }
+        }
     }
 }
 
@@ -33,15 +44,19 @@ allprojects {
     repositories {
         jcenter()
         google()
+        maven {
+            url "https://maven.google.com"
+        }
+
     }
 }
 ext {
-    buildTools = '27.0.3'
-    compileSdk = 27
+    buildTools = '28.0.3'
+    compileSdk = 28
     minSdk = 15
     versionCode = 1
     versionName = "1.0"
-    supportLib = '27.0.1'
+    supportLib = '28.0.0'
 
     espressoVersion = "3.0.1"
     androidTestVersion = "1.0.1"

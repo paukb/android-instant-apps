@@ -38,6 +38,11 @@ android {
         }
         debug {}
     }
+
+
+    dataBinding {
+        enabled true
+    }
 }
 
 dependencies {
